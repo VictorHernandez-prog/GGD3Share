@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    public GameObject UFO;
+    public GameObject BaseUFO;
     public Vector3 MinimumArea;
     public Vector3 MaximumArea;
     public int UFOcount = 0;
@@ -10,8 +10,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Start()
     {
         
-        InvokeRepeating("SpawnUFO", 0f, 1f);
+        InvokeRepeating("SpawnUFO", 0f, 2f);
+
     }
+
+    //Chunk of code for spawn area and limiting spawns
     void SpawnUFO()
     {
         if (UFOcount < MaxUFOcount)
@@ -21,7 +24,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             Vector3 randomSpawnPosition = new Vector3(randomX, randomY, 0);
 
-            Instantiate(UFO, randomSpawnPosition, Quaternion.identity);
+            GameObject Newobject = Instantiate(BaseUFO, randomSpawnPosition, Quaternion.identity);
+            Destroy(Newobject, 4f);
 
             UFOcount++;
         }
