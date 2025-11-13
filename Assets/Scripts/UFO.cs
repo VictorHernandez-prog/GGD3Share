@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -50,8 +51,14 @@ public class UFO : MonoBehaviour
     }
 
     // For Shooting/Tracking score 
-    public void OnMouseDown()
+    public int Value = 10;
+    void OnMouseDown()
     {
+        if(ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(Value);
+        }
         Destroy(gameObject);
+
     }
 }
