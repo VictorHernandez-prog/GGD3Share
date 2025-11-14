@@ -16,6 +16,7 @@ public class UFO : MonoBehaviour
     public Vector3 startposition;
     public float delta = 0.8f;
     public float speed = 1.5f;
+    public ParticleSystem PS;
     
     //RNG for deciding how it will move upon spawn
     public int MovementNumber;
@@ -24,6 +25,7 @@ public class UFO : MonoBehaviour
         //Upon spawn it will get 1-3 (ignore the 4 for now)
         startposition = transform.position;
         MovementNumber = Random.Range(1, 4);
+        PS.Emit(1);
     }
     void Update()
     {
@@ -31,6 +33,7 @@ public class UFO : MonoBehaviour
         if (MovementNumber == 1)
         {
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime, Space.Self);
+            PS.Stop();
             
         }
         // 2 - Up and down Bounce

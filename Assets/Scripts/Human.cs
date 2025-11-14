@@ -5,10 +5,11 @@ using static UnityEngine.Rendering.DebugUI;
 public class Human : MonoBehaviour
 {
     public float Dropspeed = 5f;
+    public ParticleSystem PS;
 
     void Start()
     {
-      
+        PS.Emit(1);
     }
     void Update()
     {
