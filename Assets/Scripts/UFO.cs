@@ -11,6 +11,7 @@ public class UFO : MonoBehaviour
     //MOVEMENT ONE VARIABLES
     public float rotationSpeed = 50f;
     public Transform rotateAround;
+    public AudioSource Shoot;
 
     //MOVEMENT TWO / THREE VARIABLES
     public Vector3 startposition;
@@ -61,6 +62,7 @@ public class UFO : MonoBehaviour
         {
             ScoreManager.Instance.AddScore(Value);
         }
+        Shoot.Play();
         Destroy(gameObject);
 
     }
